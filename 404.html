@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/html5reset.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>404 Page Not Found | UMSI Career Hub</title>
+</head>
+<body>
+  <header>
+    <div class="skip"><a href="#main">Skip to Main Content</a></div>
+    <img class="site-logo" src="images/UMSI_signature_vertical_informal_solidblue.jpg" alt="UMSI Logo">
+    <nav>
+      <ul class="grid">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resume.html">Resumes</a></li>
+        <li><a href="networking.html">Networking & Connections</a></li>
+        <li><a href="portfolios.html">Portfolios</a></li>
+      </ul>
+    </nav>
+    <h1>Page Not Found</h1>
+  </header>
+
+  <main class="container" id="main">
+    <div class="error-container">
+      <div class="error-code">404</div>
+
+      <h2>Looks like this page cannot be reached.</h2>
+      <p>
+        The page you're looking for may have moved, been renamed, or graduated off the site.
+        Don't worry — your career resources are still here. Let's get you back on track.
+      </p>
+
+      <div class="error-links">
+        <a href="index.html">Home</a>
+        <a href="resume.html">Resumes</a>
+        <a href="networking.html">Networking</a>
+        <a href="portfolios.html">Portfolios</a>
+      </div>
+
+      <hr class="error-divider">
+
+      <p>
+        Still lost? Visit the <a href="https://umich.instructure.com/courses/137916" target="_blank">UMSI Career Development Office</a> for direct support.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>University of Michigan School of Information |
+      <a href="https://umich.instructure.com/courses/137916">UMSI Career Development Office</a> |
+      © Copyrights <span id="year"></span> Regents of the University of Michigan
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+  </script>
+</body>
+</html>

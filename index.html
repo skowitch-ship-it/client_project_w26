@@ -33,8 +33,64 @@
 
     <section>
       <h2 >Why Use This Resource?</h2>
+<!-- The following code was created by Claude sonnet 4.6 using the prompt "help me create a career progess bar tracker using css for fun animations, make sure it is accessible and has a checklist of items to complete for career readiness. -->
+<section class="checklist-section" aria-labelledby="checklist-heading">
+  <h2 id="checklist-heading">Career Readiness Checklist</h2>
+  <p>Track your progress toward career-launch readiness. Check off each item as you complete it.</p>
 
+  <div class="checklist-progress" aria-hidden="true">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  <p class="progress-label" id="progress-label">0 of 6 complete</p>
 
+  <ul class="checklist" role="list">
+    <li class="checklist-item">
+      <label>
+        <input type="checkbox" id="check-resume" />
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="item-text">Polish your resume using the UMSI Resume Guide</span>
+      </label>
+    </li>
+    <li class="checklist-item">
+      <label>
+        <input type="checkbox" id="check-linkedin" />
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="item-text">Update your LinkedIn profile</span>
+      </label>
+    </li>
+    <li class="checklist-item">
+      <label>
+        <input type="checkbox" id="check-portfolio" />
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="item-text">Build or update your portfolio</span>
+      </label>
+    </li>
+    <li class="checklist-item">
+      <label>
+        <input type="checkbox" id="check-network" />
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="item-text">Attend a UMSI networking event</span>
+      </label>
+    </li>
+    <li class="checklist-item">
+      <label>
+        <input type="checkbox" id="check-careerlink" />
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="item-text">Log in to Career Link and explore job postings</span>
+      </label>
+    </li>
+    <li class="checklist-item">
+      <label>
+        <input type="checkbox" id="check-coach" />
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="item-text">Schedule a session with a CDO career coach</span>
+      </label>
+    </li>
+  </ul>
+
+  <p class="checklist-complete" id="checklist-complete" aria-live="polite"></p>
+</section>
+<!-- stop progress bar section -->
       <ul class ="grid-why-resource">
         <li><span>Everything in One Place:</span> Stop searching endlessly—quickly access the resources you need for resumes, interviews, networking, mentorship, and more.</li>
         <li><span>Student-Focused Navigation:</span> Browse by topic or question. Key areas are highlighted so you can get moving right away.</li>
@@ -83,6 +139,41 @@
         <!-- This code below for the dynamic footer was copie from codexworld: https://www.codexworld.com/how-to/get-current-year-to-display-dynamic-year-in-copyright-using-javascript/ -->
         <script>
 document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
+<!-- The following code was created by Claude sonnet 4.6 using the prompt "help me create a career progess bar tracker using css for fun animations, make sure it is accessible and has a checklist of items to complete for career readiness. -->
+<script>
+  const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+  const progressBar = document.getElementById('progress-bar');
+  const progressLabel = document.getElementById('progress-label');
+  const completeMsg = document.getElementById('checklist-complete');
+  const total = checkboxes.length;
+
+  // Restore saved state
+  checkboxes.forEach(cb => {
+    cb.checked = localStorage.getItem(cb.id) === 'true';
+  });
+
+  function updateProgress() {
+    const checked = [...checkboxes].filter(cb => cb.checked).length;
+    const pct = (checked / total) * 100;
+
+    progressBar.style.width = pct + '%';
+    progressBar.style.backgroundColor = pct === 100 ? '#ffcb05' : '#00274c';
+    progressLabel.textContent = `${checked} of ${total} complete`;
+    completeMsg.textContent = pct === 100
+      ? '🎉 You\'re career-launch ready! Time to apply.'
+      : '';
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      localStorage.setItem(cb.id, cb.checked);
+      updateProgress();
+    });
+  });
+
+  // Run on load to reflect restored state
+  updateProgress();
 </script>
 </body>
 </html>
